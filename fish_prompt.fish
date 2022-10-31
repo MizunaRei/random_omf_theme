@@ -9,16 +9,16 @@ end
 
 if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
 		omf install $theme_to_enable
-		printf " $theme_to_enable is installed. "
+		printf " \n $theme_to_enable is installed. \n "
 		end
 
-		
+
 omf theme $theme_to_enable
-printf " $theme_to_enable is enabled. "
+printf " \n $theme_to_enable is enabled. \n "
 
 
 function fish_prompt
 ## themes in omf could not used by source command
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
-printf " $theme_to_enable is enabled. "
+printf " \n $theme_to_enable is enabled. \n "
 end
