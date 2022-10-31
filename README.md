@@ -1,2 +1,2 @@
 # random_fish_theme
-randomly pick up and install theme from oh-my-fish official package repository
+randomly install and enable theme from oh-my-fish official package repository
