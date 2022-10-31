@@ -37,4 +37,5 @@ omf theme $theme_to_enable
 printf \n
 ## printf " \n $theme_to_enable is enabled. \n "
 fish exit
+printf \r
 end
