@@ -1,7 +1,7 @@
 while true
 # outputs 'file exists' at 10 second intervals,
 # as long as the file foo.txt or bar.txt exists.
-theme=$(omf.index.query --type=theme | shuf -n 1)
+set theme $(omf.index.query --type=theme | shuf -n 1)
 	if test "random" != $theme
 	break
 	end
