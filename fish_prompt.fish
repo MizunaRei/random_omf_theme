@@ -3,6 +3,10 @@ function fish_prompt
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
+## force omf to enable new theme
+printf "default" > $OMF_CONFIG/theme
+
+
 ## workaround for a bug of fish_prompt.fish
  rm ~/.config/fish/functions/fish_prompt.fish 
 
