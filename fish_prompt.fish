@@ -7,10 +7,11 @@ function fish_prompt
 printf "default" > $OMF_CONFIG/theme
 
 
-## workaround for a bug of fish_prompt.fish
+## workaround for priority of fish_prompt.fish
  if test -e ~/.config/fish/functions/fish_prompt.fish
  rm ~/.config/fish/functions/fish_prompt.fish 
 end
+
 
  ## pickup a theme_to_enable in omf official repo
 while true
@@ -34,7 +35,6 @@ end
 omf theme $theme_to_enable
 ## printf " \n $theme_to_enable is enabled. \n "
 printf \n
-
-
 ## printf " \n $theme_to_enable is enabled. \n "
+fish exit
 end
