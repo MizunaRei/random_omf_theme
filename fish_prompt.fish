@@ -2,15 +2,17 @@ while true
 set theme_to_enable $(omf.index.query --type=theme | shuf -n 1)
 	if test "random" != $theme_to_enable
 	and test "random_omf_theme" != $theme_to_enable
-		if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
-		omf install $theme_to_enable
-		printf " $theme_to_enable is installed. "
-		end
+		
 	break
 	end
 end
 
+if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
+		omf install $theme_to_enable
+		printf " $theme_to_enable is installed. "
+		end
 
+		
 omf theme $theme_to_enable
 printf " $theme_to_enable is enabled. "
 
