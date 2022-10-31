@@ -8,8 +8,9 @@ printf "default" > $OMF_CONFIG/theme
 
 
 ## workaround for a bug of fish_prompt.fish
+ if test -e ~/.config/fish/functions/fish_prompt.fish
  rm ~/.config/fish/functions/fish_prompt.fish 
-
+end
 
  ## pickup a theme_to_enable in omf official repo
 while true
