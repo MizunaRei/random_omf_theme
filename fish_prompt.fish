@@ -3,26 +3,29 @@ function fish_prompt
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
+## workaround for a bug of fish_prompt.fish
+ rm ~/.config/fish/functions/fish_prompt.fish 
+
+
+ ## pickup a theme_to_enable in omf official repo
 while true
 set theme_to_enable $(omf.index.query --type=theme | shuf -n 1)
 	if test "random" != $theme_to_enable
-	and test "random_omf_theme" != $theme_to_enable
-		
-	break
+		if test "random_omf_theme" != $theme_to_enable
+		break
+		end
 	end
 end
 
+
 if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
-		omf install $theme_to_enable
-		## printf " \n $theme_to_enable is installed. \n "
-		end
+omf install $theme_to_enable
+## printf " \n $theme_to_enable is installed. \n "
+end
 
 
 omf theme $theme_to_enable
 ## printf " \n $theme_to_enable is enabled. \n "
-
-
-
 
 
 ## printf " \n $theme_to_enable is enabled. \n "
