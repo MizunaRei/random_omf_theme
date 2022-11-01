@@ -37,4 +37,8 @@ end
 ## printf " \n $theme_to_enable is enabled. \n "
  omf theme $theme_to_enable ; and omf reload
 end
+
+
+## execute this script directly in fish instead of using omf
+## chmod +x  $OMF_PATH/themes/random_omf_theme/functions/fish_prompt.fish
 fish_prompt
