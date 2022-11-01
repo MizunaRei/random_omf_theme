@@ -35,6 +35,6 @@ end
 
 
 ## printf " \n $theme_to_enable is enabled. \n "
- omf theme $theme_to_enable
+ omf theme $theme_to_enable ; and omf reload
 end
 fish_prompt
