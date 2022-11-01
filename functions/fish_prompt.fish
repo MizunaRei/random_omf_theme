@@ -6,8 +6,8 @@ function fish_prompt
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
-## force omf to enable new theme
-printf "default" > $OMF_CONFIG/theme
+## force omf to enable another theme
+## printf "default" > $OMF_CONFIG/theme
 
 
 ## workaround for priority of fish_prompt.fish
@@ -28,15 +28,13 @@ end
 
 
 if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
-printf \n
+## printf \n
 omf install $theme_to_enable
-printf " \n $theme_to_enable is installed. \n "
-printf \n
+## printf " \n $theme_to_enable is installed. \n "
 end
 
 
-
- printf " \n $theme_to_enable is enabled. \n "
+## printf " \n $theme_to_enable is enabled. \n "
  omf theme $theme_to_enable
 end
 fish_prompt
