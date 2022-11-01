@@ -26,16 +26,12 @@ end
 
 if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
 printf \n
-omf install $theme_to_enable
-## printf " \n $theme_to_enable is installed. \n "
+# omf install $theme_to_enable
+printf " \n $theme_to_enable is installed. \n "
 printf \n
 end
 
 
-omf theme $theme_to_enable
-## printf " \n $theme_to_enable is enabled. \n "
-printf \n
-## printf " \n $theme_to_enable is enabled. \n "
-fish exit
-printf \r
+# omf theme $theme_to_enable
+ printf " \n $theme_to_enable is enabled. \n "
 end
