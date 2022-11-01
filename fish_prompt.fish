@@ -1,3 +1,6 @@
+#!/usr/bin/env fish
+
+
 function fish_prompt
 ## themes in omf could not used by source command
 ## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
