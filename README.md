@@ -3,7 +3,7 @@ randomly install and enable theme from [oh-my-fish/oh-my-fish](https://github.co
 ### Installation🛫 & usage 
 Install [oh-my-fish/oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) for fish shell first. And then execute these commands in the fish shell. 
 
-`git clone --depth=1 https://github.com/MilkyMAISHIRANUI/random_omf_theme $OMF_PATH/themes/`
+`git clone --depth=1 https://github.com/MilkyMAISHIRANUI/random_omf_theme $OMF_PATH/themes/random_omf_theme`
 
 For a random theme, type this. 
 
