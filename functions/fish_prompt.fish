@@ -39,6 +39,7 @@ omf.cli.theme $theme_to_enable
 ## printf " \n $theme_to_enable is enabled. \n "
 ## prompt disappeared after enabling new theme. sometimes omf theme command failed.
 ## omf theme $theme_to_enable ; and omf reload
+omf.cli.reload
 end
 
 
