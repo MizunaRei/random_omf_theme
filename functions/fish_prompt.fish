@@ -28,13 +28,14 @@ end
 
 
 if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
+omf.cli.install $theme_to_enable
 ## printf \n
-omf install $theme_to_enable
+## omf install $theme_to_enable
 ## printf " \n $theme_to_enable is installed. \n "
 end
 
 
-omf.theme.set $theme_to_enable
+omf.cli.theme $theme_to_enable
 ## printf " \n $theme_to_enable is enabled. \n "
 ## prompt disappeared after enabling new theme. sometimes omf theme command failed.
 ## omf theme $theme_to_enable ; and omf reload
