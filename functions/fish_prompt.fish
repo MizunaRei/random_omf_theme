@@ -49,3 +49,6 @@ end
 function omf.theme.remove_all_themes
 rm -rf $OMF_PATH/themes/*
 end
+
+
+fish_prompt
