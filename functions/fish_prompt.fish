@@ -11,8 +11,8 @@ function fish_prompt
 
 
 ## workaround for priority of fish_prompt.fish
- if test -e ~/.config/fish/functions/fish_prompt.fish
- rm ~/.config/fish/functions/fish_prompt.fish 
+ if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
+ rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
 end
 
 
@@ -34,8 +34,10 @@ omf install $theme_to_enable
 end
 
 
+omf.theme.set $theme_to_enable
 ## printf " \n $theme_to_enable is enabled. \n "
- omf theme $theme_to_enable ; and omf reload
+## prompt disappeared after enabling new theme. sometimes omf theme command failed.
+## omf theme $theme_to_enable ; and omf reload
 end
 
 
