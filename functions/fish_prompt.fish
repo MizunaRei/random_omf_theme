@@ -44,4 +44,8 @@ end
 
 ## execute this script directly in fish instead of using omf
 ## chmod +x  $OMF_PATH/themes/random_omf_theme/functions/fish_prompt.fish
-fish_prompt
+
+
+function omf.theme.remove_all_themes
+rm -rf $OMF_PATH/themes/*
+end
