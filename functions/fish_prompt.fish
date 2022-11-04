@@ -2,22 +2,22 @@
 
 
 function fish_prompt
-## themes in omf could not used by source command
-## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
+	## themes in omf could not used by source command
+	## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
-## workaround for priority of fish_prompt.fish . It cause omf theme command fail. 
-## omf theme this script file will not call rm command to fix the issue.
+	## workaround for priority of fish_prompt.fish . It cause omf theme command fail. 
+	## omf theme this script file will not call rm command to fix the issue.
 	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
 	rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
 	end
 
 
-## pickup a theme_to_enable from omf official repo
+	## pickup a theme_to_enable from omf official repo
 	while true
-	set theme_to_enable (random choice (omf.index.query --type=theme ))
+	set theme_to_enable (random choice (omf.index.query --type=theme))
 	if test -z "$theme_to_enable"
-	set theme_to_enable $(omf.packages.list --theme)
+	set theme_to_enable (random choice(omf.packages.list --theme))
 	end
 	if test "random" != $theme_to_enable
 		if test "random_omf_theme" != $theme_to_enable
@@ -27,15 +27,15 @@ function fish_prompt
 	end
 
 
-## install remote theme if not available locally
+	## install remote theme if not available locally
 	if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
 	omf.cli.install $theme_to_enable
-## call low level omf function instead of high level function
-## omf install $theme_to_enable
+	## call low level omf function instead of high level function
+	## omf install $theme_to_enable
 	end
 
 
-## enable new theme
+	## enable the new theme
 	omf.theme.set $theme_to_enable
 	
 
