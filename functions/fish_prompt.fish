@@ -36,7 +36,7 @@ function fish_prompt
 
 	
 ## fix prompt disappeared after enabling new theme.  
-	omf.cli.reload
+	##omf.cli.reload
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
