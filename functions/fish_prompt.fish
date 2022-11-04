@@ -43,8 +43,8 @@ function fish_prompt
 	printf "random_omf_theme" > $OMF_CONFIG/theme
 	
 	
-	## pwd command makes a new prompt line that fix prompt line disappeared after enabling new theme.
-	pwd
+	##  command makes a new prompt line that fix prompt line disappeared after enabling new theme.
+	printf "\n"
 	## omf reload command will cause dead loop because the command source this script endlessly.
 	##omf.cli.reload
 
