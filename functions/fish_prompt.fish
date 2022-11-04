@@ -14,6 +14,7 @@ function fish_prompt
 
 
 ## pickup a theme_to_enable from omf official repo
+	set theme_to_enable "default"
 	while true
 	set theme_to_enable (random choice (omf.index.query --type=theme ))
 	if test "random" != $theme_to_enable
