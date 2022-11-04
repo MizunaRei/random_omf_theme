@@ -14,15 +14,10 @@ function fish_prompt
 
 
 ## pickup a theme_to_enable from omf official repo
-	 if test -f $OMF_CONFIG/theme
-    read current_theme < $OMF_CONFIG/theme
-    
-  end
-	
 	while true
 	set theme_to_enable (random choice (omf.index.query --type=theme ))
 	if test -z "$theme_to_enable"
-	set theme_to_enable $current_theme
+	set theme_to_enable $(omf.packages.list --theme)
 	end
 	if test "random" != $theme_to_enable
 		if test "random_omf_theme" != $theme_to_enable
@@ -32,6 +27,7 @@ function fish_prompt
 	end
 
 
+## install remote theme if not available locally
 	if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
 	omf.cli.install $theme_to_enable
 ## call low level omf function instead of high level function
@@ -41,9 +37,6 @@ function fish_prompt
 
 ## enable new theme
 	omf.theme.set $theme_to_enable
-
-	
-
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
@@ -52,7 +45,7 @@ function fish_prompt
 	
 	## pwd command makes a new prompt line that fix prompt line disappeared after enabling new theme.
 	pwd
-	## omf reload command will cause dead loop. It can now refresh prompt line.
+	## omf reload command will cause dead loop because the command source this script endlessly.
 	##omf.cli.reload
 
 	
