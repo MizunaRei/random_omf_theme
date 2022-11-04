@@ -7,7 +7,7 @@ function fish_prompt
 
 
 	## workaround for priority of fish_prompt.fish . It cause omf theme command fail. 
-	## omf theme this script file will not call rm command to fix the issue.
+	## calling omf theme this script file will not call rm command to fix the issue.
 	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
 	rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
 	end
