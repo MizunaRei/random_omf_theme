@@ -26,26 +26,25 @@ function fish_prompt
 
 	if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
 	omf.cli.install $theme_to_enable
-## call omf function instead of using shell command
+## call low level omf function instead of high level function
 ## omf install $theme_to_enable
 	end
 
 
 ## enable new theme
-	omf.cli.theme $theme_to_enable
-
-
-## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
-	printf "random_omf_theme" > $OMF_CONFIG/theme
+	omf.theme.set $theme_to_enable
 
 	
 ## fix prompt disappeared after enabling new theme.  
 	omf.cli.reload
 	
+
+	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
+	printf "random_omf_theme" > $OMF_CONFIG/theme
+
 	
 ## function fish_prompt end	
 end
-
 
 
 ## source this script directly in fish instead of using omf theme command to fix fish_prompt.fish priority issue
