@@ -35,12 +35,17 @@ function fish_prompt
 	omf.theme.set $theme_to_enable
 
 	
-## fix prompt disappeared after enabling new theme.  
-	##omf.cli.reload
+
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random_omf_theme" > $OMF_CONFIG/theme
+	
+	
+	## pwd command makes a new prompt line that fix prompt line disappeared after enabling new theme.
+	pwd
+	## omf reload command will cause dead loop. It can now refresh prompt line.
+	##omf.cli.reload
 
 	
 ## function fish_prompt end	
