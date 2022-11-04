@@ -17,7 +17,7 @@ function fish_prompt
 	while true
 	set theme_to_enable (random choice (omf.index.query --type=theme))
 	if test -z "$theme_to_enable"
-	set theme_to_enable (random choice(omf.packages.list --theme))
+	set theme_to_enable (random choice (omf.packages.list --theme))
 	end
 	if test "random" != $theme_to_enable
 		if test "random_omf_theme" != $theme_to_enable
