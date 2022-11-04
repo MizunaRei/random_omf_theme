@@ -14,3 +14,5 @@ We are not listed in the oh-my-fish packages repository. Therefore you could not
  `fish_config` command persists the prompt to `~/.config/fish/functions/fish_prompt.fish` . That file takes precedence over Oh My Fish's themes. Therefore command `omf theme <theme_name>` will not work.  `aight`,`boxfish`,`sashimi`,`slavic-cat` and other themes will cause this issue.
 To fix it as `omf doctor` suggested, enter this command `rm ~/.config/fish/functions/fish_prompt.fish` .
 Or type this command `source $OMF_PATH/themes/random_omf_theme/functions/fish_prompt.fish` and let us do that for you automatically and enable a new random theme.
+
+If random_omf_theme is enabled already, `omf theme random_omf_theme` does nothing. So it does with other themes. Please use `omf reload` command instead.
