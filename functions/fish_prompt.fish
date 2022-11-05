@@ -6,7 +6,7 @@ function fish_prompt
 	## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
 
 
-	## workaround for priority of fish_prompt.fish . It cause omf theme command fail. 
+	## workaround for priority of fish_prompt.fish . It cause omf theme command failing. 
 	## calling omf theme this script file will not call rm command to fix the issue.
 	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
 	rm (omf.xdg.config_home)/fish/functions/fish_prompt.fish 
@@ -16,17 +16,17 @@ function fish_prompt
 	## pickup a theme_to_enable from omf official repo
 	while true
 		if test -n "$(omf.index.query --type=theme)"
-		set theme_to_enable $(random choice $(omf.index.query --type=theme))
+		set theme_to_enable "$(random choice (omf.index.query --type=theme))"
 		else
-		set theme_to_enable $(random choice $(omf.packages.list --theme))
+		set theme_to_enable "$(random choice (omf.packages.list --theme))"
 		end
 
 		if test -z "$theme_to_enable"
-		set theme_to_enable $(random choice $(omf.packages.list --theme))
+		set theme_to_enable "$(random choice (omf.packages.list --theme))"
 		end
 
-		if test "random" != $theme_to_enable
-			if test "random_omf_theme" != $theme_to_enable
+		if test "random" != "$theme_to_enable"
+			if test "random_omf_theme" != "$theme_to_enable"
 			break
 			end
 		end
@@ -34,25 +34,26 @@ function fish_prompt
 
 
 	## install remote theme if not available locally
-	if not contains   "$theme_to_enable"  $(omf.packages.list --theme)
-	omf.cli.install $theme_to_enable
+	if not contains "$theme_to_enable" "$(omf.packages.list --theme)"
+	omf.cli.install "$theme_to_enable"
 	## call low level omf function instead of high level function
 	## omf install $theme_to_enable
 	end
 
 
 	## enable the new theme
-	omf.theme.set $theme_to_enable
+	omf.theme.set "$theme_to_enable"
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
-	printf "random_omf_theme" > $OMF_CONFIG/theme
+	printf "random_omf_theme" > "$OMF_CONFIG"/theme
 	
 	
-	##  command makes a new prompt line that fix prompt line disappeared after enabling new theme.
+	##  command makes a new prompt line that fix prompt line disappearing after enabling new theme.
 	printf " \r "
-	
-	## omf reload command will cause dead loop because the command source this script endlessly.
+	## When random theme is enabled, omf reload command will cause dead loop.
+	## prompt line appears without theme after enabling a new theme.
+	## The new theme will be enabled after a command returns.
 	## omf.cli.reload
 
 	
@@ -66,9 +67,10 @@ end
 
 ## holding too many themes and plugins might cause issues.
 function omf.theme.remove_all_themes
-	rm -rf $OMF_PATH/themes/*
+	rm -rf "$OMF_PATH"/themes/*
 end
 
 
-## source this script file to fix fish_prompt.fish priority issue.
+## enabling a theme will autoload the function fish_prompt once, but will not run other part of the script file.
+## source this script file to call rm command to fix fish_prompt.fish priority issue.
 fish_prompt
