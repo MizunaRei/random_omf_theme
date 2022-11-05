@@ -48,7 +48,13 @@ function fish_prompt
 	## use high level functions for compatibility
 	omf theme "$theme_to_enable"
 	
+
+	## workaround for priority of fish_prompt.fish . It blocks random theme enabling. 
+	if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
+	mv -f (omf.xdg.config_home)/fish/functions/fish_prompt.fish (omf.xdg.config_home)/fish/functions/fish_prompt.fish.old
+	end
 	
+
 	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
 
 
@@ -59,6 +65,7 @@ function fish_prompt
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
 	printf " \r "
+
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
 	printf "random_omf_theme" > "$OMF_CONFIG"/theme
