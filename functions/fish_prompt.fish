@@ -1,11 +1,11 @@
 #!/usr/bin/env fish
 
 
+## themes in omf could not used by source command
+## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
+
+
 function fish_prompt
-	## themes in omf could not used by source command
-	## source $OMF_PATH/themes/$theme_to_enable/functions/fish_prompt.fish
-
-
 	## workaround for priority of fish_prompt.fish . It cause omf theme command failing. 
 	## calling omf theme this script file will not call rm command to fix the issue.
 	## if test -e (omf.xdg.config_home)/fish/functions/fish_prompt.fish
@@ -36,22 +36,22 @@ function fish_prompt
 	## install remote theme if not available locally
 	if not contains "$theme_to_enable" "$(omf.packages.list --theme)"
 	## omf.cli.install "$theme_to_enable"
-	## call low level omf function instead of high level function
-        omf install "$theme_to_enable"
+	## use low level functions for performance
+	## use high level functions for compatibility
+	omf install "$theme_to_enable"
 	end
 
 
         ## enable the new theme
 	## use low level functions for performance
-        omf.theme.set "$theme_to_enable"
+        ## omf.theme.set "$theme_to_enable"
 	## use high level functions for compatibility
-	## omf theme function cause compatibility issues with this script. prompt line disappeared after enabling.
-	## omf theme "$theme_to_enable"
+	omf theme "$theme_to_enable"
 	
 	
-	##  command makes a new prompt line that fix prompt line disappearing after enabling new theme.
-	printf " \n "
-	printf " \r "
+	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
+
+
 	## When random theme is enabled, omf reload command will cause dead loop.
 	## prompt line appears without theme after enabling a new theme.
 	## The new theme will be enabled after a command returns.
@@ -66,10 +66,6 @@ function fish_prompt
 end
 
 
-## source this script directly in fish instead of using omf theme command to fix fish_prompt.fish priority issue
-## chmod +x  $OMF_PATH/themes/random_omf_theme/functions/fish_prompt.fish
-
-
 ## holding too many themes and plugins might cause issues.
 function omf.theme.remove_all_themes
 	rm -rf "$OMF_PATH"/themes/*
@@ -77,5 +73,3 @@ end
 
 
 ## enabling a theme will autoload the function fish_prompt once, but will not run other part of the script file.
-## source this script file to call rm command to fix fish_prompt.fish priority issue.
-fish_prompt
