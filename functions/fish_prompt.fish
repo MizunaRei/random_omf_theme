@@ -35,14 +35,15 @@ function fish_prompt
 
 	## install remote theme if not available locally
 	if not contains "$theme_to_enable" "$(omf.packages.list --theme)"
-	omf.cli.install "$theme_to_enable"
+	## omf.cli.install "$theme_to_enable"
 	## call low level omf function instead of high level function
-	## omf install $theme_to_enable
+        omf install "$theme_to_enable"
 	end
 
 
 	## enable the new theme
-	omf.theme.set "$theme_to_enable"
+	## omf.theme.set "$theme_to_enable"
+        omf theme "$theme_to_enable"
 	
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
