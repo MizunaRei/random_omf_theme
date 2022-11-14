@@ -98,7 +98,7 @@ end
 
 
 	## force omf to enable a new theme when fish source dotfiles (i.e. omf reload)
-	echo "random_omf_theme" > "$OMF_CONFIG"/theme
+	echo "random_omf_theme" > "$OMF_CONFIG/theme"
 
 
 	## prompt line disappears after enabling new theme. That may be a bug of fish shell.
